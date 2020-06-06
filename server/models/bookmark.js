@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/bookmarks', {
+const connectionString = process.env.MONGO_STRING || 'mongodb://localhost:27017/bookmarks';
+
+mongoose.connect(connectionString, {
   autoCreate: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,

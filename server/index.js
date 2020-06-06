@@ -6,6 +6,9 @@ const bookmarks = require('./routes/bookmarks');
 app.use(cors());
 app.use(express.json());
 
-app.use('/bookmarks', bookmarks);
+const SERVER_PORT = process.env.SERVER_PORT || 8081;
 
-app.listen(8080, () => console.log('Server started at http://localhost:8080'));
+app.use('/bookmarks', bookmarks);
+app.get('/', (_, res) => res.send(`Server is running on port ${SERVER_PORT}`));
+
+app.listen(SERVER_PORT, () => console.log(`Server started at http://localhost:${SERVER_PORT}`));

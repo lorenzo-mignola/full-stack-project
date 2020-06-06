@@ -40,3 +40,10 @@ Crare un applicazione per gestire i preferiti e salvarsi sul db. Esempio preferi
 4. Express
 5. Docker
 6. Typescript
+
+---
+
+## Avvio progetto
+
+Dalla cartella del progetto:
+`docker-compose up`
