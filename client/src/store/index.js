@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { getBookmarks, addBookmark, deleteBookmark } from "../api";
+import { getBookmarks, addBookmark, deleteBookmark, findBookmark } from "../api";
 
 Vue.use(Vuex);
 
@@ -46,6 +46,16 @@ export default new Vuex.Store({
       try {
         await deleteBookmark(payload);
         dispatch("init");
+      } catch (e) {
+        console.error(e);
+      }
+      commit("SET_LOADING", false);
+    },
+    async findBookmark({ commit }, payload) {
+      commit("SET_LOADING", true);
+      try {
+        const res = await findBookmark(payload);
+        commit("SET_BOOKMARKS", res.data);
       } catch (e) {
         console.error(e);
       }

@@ -46,4 +46,6 @@ Crare un applicazione per gestire i preferiti e salvarsi sul db. Esempio preferi
 ## Avvio progetto
 
 Dalla cartella del progetto:
-`docker-compose up`
+
+- Se è la prima volta `docker-compose build`
+- Se non è la prima volta`docker-compose up`

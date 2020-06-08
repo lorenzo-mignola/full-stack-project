@@ -1,6 +1,6 @@
 <template>
   <div class="addContainer">
-    <v-expansion-panels>
+    <v-expansion-panels :value="openPanel">
       <v-expansion-panel>
         <v-expansion-panel-header>Add Bookmark</v-expansion-panel-header>
         <v-expansion-panel-content>
@@ -41,6 +41,7 @@ import { mapActions } from "vuex";
 
 export default {
   data: () => ({
+    openPanel: 1,
     name: "",
     link: "",
     testLinkFormat: value => {
@@ -55,6 +56,7 @@ export default {
       this.saveBookmark({ name, link });
       this.name = "";
       this.link = "";
+      this.openPanel = 1;
     }
   }
 };

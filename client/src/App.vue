@@ -1,17 +1,12 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
-        Bookmark manager
-      </div>
-    </v-app-bar>
-
+    <AppBar />
     <v-content>
       <AddBookmark />
-      <div class="loading" v-if="loading">
+      <div v-if="loading" class="loading">
         <v-progress-linear indeterminate />
       </div>
-      <v-list class="bookmarkContainer" v-if="!loading">
+      <v-list v-if="!loading" class="bookmarkContainer">
         <Bookmark
           v-for="bookmark in bookmarks"
           :key="bookmark._id"
@@ -25,22 +20,24 @@
 <script>
 import AddBookmark from "./components/AddBookmark";
 import Bookmark from "./components/Bookmark";
+import AppBar from "./components/AppBar";
 import { mapActions, mapState } from "vuex";
 
 export default {
   name: "App",
   components: {
     AddBookmark,
-    Bookmark
+    Bookmark,
+    AppBar
+  },
+  computed: {
+    ...mapState(["bookmarks", "loading"])
   },
   mounted() {
     this.init();
   },
   methods: {
     ...mapActions(["init"])
-  },
-  computed: {
-    ...mapState(["bookmarks", "loading"])
   }
 };
 </script>
