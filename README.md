@@ -49,3 +49,5 @@ Dalla cartella del progetto:
 
 - Se è la prima volta `docker-compose build`
 - Se non è la prima volta`docker-compose up`
+  - [client](http://localhost:8080)
+  - [server](http://localhost:8081)

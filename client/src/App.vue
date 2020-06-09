@@ -11,9 +11,15 @@
           v-for="bookmark in bookmarks"
           :key="bookmark._id"
           :bookmark="bookmark"
+          @openDialog="handleDialog"
         />
       </v-list>
     </v-content>
+    <DialogEdit
+      :open="dialogOpen"
+      :bookmark="bookmarkToEdit"
+      @closeDialog="handleDialog"
+    />
   </v-app>
 </template>
 
@@ -21,6 +27,7 @@
 import AddBookmark from "./components/AddBookmark";
 import Bookmark from "./components/Bookmark";
 import AppBar from "./components/AppBar";
+import DialogEdit from "./components/DialogEdit";
 import { mapActions, mapState } from "vuex";
 
 export default {
@@ -28,8 +35,13 @@ export default {
   components: {
     AddBookmark,
     Bookmark,
-    AppBar
+    AppBar,
+    DialogEdit
   },
+  data: () => ({
+    dialogOpen: false,
+    bookmarkToEdit: {}
+  }),
   computed: {
     ...mapState(["bookmarks", "loading"])
   },
@@ -37,7 +49,13 @@ export default {
     this.init();
   },
   methods: {
-    ...mapActions(["init"])
+    ...mapActions(["init"]),
+    handleDialog({ status, id = null }) {
+      this.dialogOpen = status;
+      if (id) {
+        this.bookmarkToEdit = this.bookmarks.find(b => b._id === id);
+      }
+    }
   }
 };
 </script>
@@ -48,5 +66,18 @@ export default {
 }
 .loading {
   margin: 16px;
+  opacity: 1;
+  animation-name: fadeIn;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.5s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>

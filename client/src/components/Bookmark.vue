@@ -26,13 +26,11 @@ export default {
   props: {
     bookmark: {
       type: Object,
-      default: function() {
-        return {
-          _id: "",
-          name: "",
-          link: ""
-        };
-      }
+      default: () => ({
+        _id: "",
+        name: "",
+        link: ""
+      })
     }
   },
   methods: {
@@ -41,7 +39,7 @@ export default {
       window.open(this.bookmark.link, "_blank");
     },
     editBookmark() {
-      console.log(this.bookmark);
+      this.$emit("openDialog", { status: true, id: this.bookmark._id });
     },
     handleDelete() {
       this.deleteBookmark(this.bookmark._id);

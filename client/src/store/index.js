@@ -1,6 +1,7 @@
+/* eslint-disable */
 import Vue from "vue";
 import Vuex from "vuex";
-import { getBookmarks, addBookmark, deleteBookmark, findBookmark } from "../api";
+import { getBookmarks, addBookmark, deleteBookmark, findBookmark, saveBookmark } from "../api";
 
 Vue.use(Vuex);
 
@@ -56,6 +57,17 @@ export default new Vuex.Store({
       try {
         const res = await findBookmark(payload);
         commit("SET_BOOKMARKS", res.data);
+      } catch (e) {
+        console.error(e);
+      }
+      commit("SET_LOADING", false);
+    },
+    async editBookmark({ commit, dispatch }, payload) {
+      const { id, bookmark } = payload;
+      commit("SET_LOADING", true);
+      try {
+        const res = await saveBookmark(id, bookmark);
+        dispatch("init");
       } catch (e) {
         console.error(e);
       }

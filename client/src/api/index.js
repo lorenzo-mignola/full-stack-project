@@ -12,3 +12,6 @@ export const deleteBookmark = id => axios.delete(`${server}/bookmarks/${id}`);
 
 export const findBookmark = search =>
   axios.get(`${server}/bookmarks/findBookmark`, { params: { search } });
+
+export const saveBookmark = (id, newBookmark) =>
+  axios.put(`${server}/bookmarks/${id}`, newBookmark);

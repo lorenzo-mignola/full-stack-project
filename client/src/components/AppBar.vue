@@ -6,17 +6,20 @@
       </div>
       <div>
         <v-text-field
+          v-model="search"
           dense
+          flat
           solo
           clearable
           placeholder="Search"
           append-icon="mdi-magnify"
           class="searchTextField"
-          v-model="search"
           :background-color="isFocus ? focus : nonFocus"
           @focus="changeFocus"
           @blur="changeFocus"
           @keypress.enter="searchBookmark"
+          @click:append="searchBookmark"
+          @click:clear="clearSearch"
         ></v-text-field>
       </div>
     </div>
@@ -39,6 +42,9 @@ export default {
     },
     searchBookmark() {
       this.findBookmark(this.search);
+    },
+    clearSearch() {
+      this.findBookmark("");
     }
   }
 };

@@ -41,7 +41,7 @@ import { mapActions } from "vuex";
 
 export default {
   data: () => ({
-    openPanel: 1,
+    openPanel: 0,
     name: "",
     link: "",
     testLinkFormat: value => {
@@ -56,6 +56,7 @@ export default {
       this.saveBookmark({ name, link });
       this.name = "";
       this.link = "";
+      // Forza chiusura dell'expansion pannel
       this.openPanel = 1;
     }
   }
