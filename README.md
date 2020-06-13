@@ -43,11 +43,19 @@ Crare un applicazione per gestire i preferiti e salvarsi sul db. Esempio preferi
 
 ---
 
-## Avvio progetto
+## Documentazione
+
+La documentazione riguarda il progetto sviluppato usando docker per usare i container. Il backend è stato sviluppato con Express con mongoose. Il frontend con vue e vuetify con vuex per gestire i dati. Il progetto è stato fatto interamente con javascript. Come gestore dei pacchetti viene utilizzato yarn
+
+### Avvio del progetto
 
 Dalla cartella del progetto:
 
 - Se è la prima volta `docker-compose build`
 - Se non è la prima volta`docker-compose up`
-  - [client](http://localhost:8080)
-  - [server](http://localhost:8081)
+
+Dopo che docker avrà avviato il progetto il client sarà avviato su [http://localhost:8080](http://localhost:8080), mentre il server sarà avviato su [http://localhost:8081](http://localhost:8081)
+
+### [Documentazione backend](./server/README.md)
+
+### [Documentazione frontend](./client/README.md)
