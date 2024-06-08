@@ -4,6 +4,12 @@
 
 Crare un applicazione per gestire i preferiti e salvarsi sul db. Esempio preferiti di chrome con la possibilità di aggiungerli direttamente e senza la struttura di cartelle laterali
 
+## Esempio
+
+```sh
+git switch develop-lorenzo
+```
+
 ## Struttura progetto
 
 - [MongoDB](https://www.mongodb.com/) come database
